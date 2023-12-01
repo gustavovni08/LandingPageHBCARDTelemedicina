@@ -18,6 +18,61 @@
                 <img :src="require('@/assets/homeImg.png')" alt="homeImg">
             </div>
         </section>
+        <section class="section-produto">
+            <div class="produto-header">
+                <div class="produto-title">
+                    <p>Cuide da sua saúde em qualquer lugar do mundo</p>
+                </div>
+
+                <div class="produto-logo">
+                    <img :src="require('@/assets/AlbertEinstein.svg')" alt="AlbertEinstein">
+                </div>
+            </div>
+            <div class="produto-info">
+                <div class="produto-itens-container">
+                    <div class="list-container">
+                       <div class="list-item">
+                            <span class="material-symbols-outlined">
+                             emergency
+                            </span>
+                            <p>Atendimento em até 10 minutos</p>
+                       </div>
+                       <div class="list-item">
+                            <span class="material-symbols-outlined">
+                             emergency
+                            </span>
+                            <p>Parceria Hospital AlbertEinstein</p>
+                       </div>
+                       <div class="list-item">
+                            <span class="material-symbols-outlined">
+                             emergency
+                            </span>
+                            <p>Atendimento 24 horas</p>
+                       </div>
+                       <div class="list-item">
+                            <span class="material-symbols-outlined">
+                             emergency
+                            </span>
+                            <p>100% Online</p>
+                       </div>
+
+                    </div>
+                    <div class="buton-container">
+                        <div class="button button-produto">
+                            ASSINE AGORA
+                        </div>
+                    </div>
+                </div>
+
+                <div class="produto-video-container">
+
+                </div>
+            </div>
+
+
+
+        </section>
+
 
         <br>
         
@@ -190,7 +245,7 @@ export default {
         align-items: center;
         justify-content: center;
 
-        animation: fadeIn 1.8s ease-out forwards;
+        /* animation: fadeIn 1.8s ease-out forwards; */
        
     }
     .img-container img{
@@ -224,11 +279,85 @@ export default {
         max-width: 80%;
         }
 
+        .section-produto{
+            margin-top: 400px;
+        }
+
+        .produto-header{
+            flex-direction: column;
+            
+        }
+
+        .produto-header p{
+            text-align: center;
+            width: 100%;
+        }
+
         .preços{
             flex-direction: column;
             margin-top: 680px;
         }
     }
+
+
+    .section-produto{
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+        justify-content: center;
+        align-items: center;
+    
+    }
+
+    .produto-header{
+        display: flex;
+        width: 73.77%;
+        justify-content: space-between;
+    }
+    .produto-title p{
+        font-weight: bold;
+        font-size: 52px;
+        color: #082777;
+        text-align: left;
+    }
+    .produto-logo{
+        display: flex;
+        width: 30%;
+    }
+
+
+    .produto-title{
+        width: 70%;
+    }
+
+    .list-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+        font-size: 22px;
+        color: #082777;
+    }
+
+    .list-item p{
+        text-align: left;
+        width: 100%;
+        margin-left: 20px;
+    
+    }
+
+    .produto-info{
+        display: flex;
+        width: 73%;
+        justify-content:flex-start;
+    
+    }
+
+    .button-produto{
+        width: 350px;
+        height: 63px;
+    }
+
 
     .preços{
         
