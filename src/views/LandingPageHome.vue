@@ -1,10 +1,10 @@
 <template>
     <div class="main-container">
-        <header class="header">
-            <div class="logo-container">
+        <header class="header" :class="{ 'fixed-header': isFixed }">
+            <div class="header-logo-container">
                 <img :src="require('@/assets/HbcardTeleMedicina.svg')" alt="">
             </div>
-            <div class="button-container">
+            <div class="header-button-container">
                 <div class="button header-button"
                 @click="irParaPrecos"
                 >
@@ -32,6 +32,105 @@
                 <img :src="require('@/assets/homeImg.png')" alt="homeImg">
             </div>
         </section>
+
+        <br>
+
+        <section class="section-produto">
+            <div class="produto-header">
+                <div class="produto-title">
+                    <p>Cuide da sua saúde em qualquer lugar do mundo</p>
+                </div>
+
+                <div class="produto-logo">
+                    <img :src="require('@/assets/AlbertEinstein.svg')" alt="AlbertEinstein">
+                </div>
+            </div>
+            <div class="produto-info">
+                <div class="produto-itens-container">
+                    <div class="list-container">
+                       <div class="list-item">
+                            <span class="material-symbols-outlined">
+                             emergency
+                            </span>
+                            <p>Atendimento em até 10 minutos</p>
+                       </div>
+                       <div class="list-item">
+                            <span class="material-symbols-outlined">
+                             emergency
+                            </span>
+                            <p>Parceria Hospital AlbertEinstein</p>
+                       </div>
+                       <div class="list-item">
+                            <span class="material-symbols-outlined">
+                             emergency
+                            </span>
+                            <p>Atendimento 24 horas</p>
+                       </div>
+                       <div class="list-item">
+                            <span class="material-symbols-outlined">
+                             emergency
+                            </span>
+                            <p>100% Online</p>
+                       </div>
+
+                    </div>
+                    <div class="buton-container">
+                        <div class="button button-produto"
+                        @click="irParaPrecos">
+                            ASSINE AGORA
+                        </div>
+                    </div>
+                </div>
+
+                <div class="produto-video-container">
+
+                </div>
+            </div>
+
+
+
+        </section>
+
+        <br>
+
+        <section class="section-produto">
+            <div class="produto-header">
+                <div class="produto-title">
+                    <p>Economize com a <br> nossa paceria</p>
+                </div>
+
+                <div class="produto-logo">
+                    <img :src="require('@/assets/tokio-marine-seguradora.svg')" alt="AlbertEinstein">
+                </div>
+            </div>
+            <div class="produto-info">
+                <div class="produto-itens-container">
+                    <div class="info-container">
+                <div class="h1-container">
+                    <p class="h2-text">HACARD em parceria com a <br>
+                        Tokio Marine Seguradora oferece a <br>
+                        telemadicina do Einstein com</p>
+                    <h1 class="h1-price h1-price-produto">87%OFF</h1>
+                </div>
+
+                    </div>
+                    <div class="buton-container">
+                        <div class="button button-produto"
+                        @click="irParaPrecos">
+                            ASSINE AGORA
+                        </div>
+                    </div>
+                </div>
+
+                <div class="produto-video-container">
+
+                </div>
+            </div>
+
+
+
+        </section>
+
 
         <br>
         
@@ -76,7 +175,9 @@ export default {
                 //     price: 19.90,
                 //     users: 10,
                 // },
-            ]
+            ],
+
+            isFixed: false,
         }
     },
 
@@ -84,7 +185,16 @@ export default {
         irParaPrecos(){
             const precos = document.querySelector('.preços')
             precos.scrollIntoView({behavior:'smooth', block:'end'})
-        }
+        },
+
+        handleScroll() {
+      // Verifica se a posição de rolagem é maior que a posição do cabeçalho
+        this.isFixed = window.scrollY > this.$el.querySelector("header").offsetTop;
+        },
+    },
+
+    mounted() {
+    window.addEventListener("scroll", this.handleScroll);
     },
 
 
@@ -98,13 +208,48 @@ export default {
     .main-container{
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: space-evenly;
     }
 
     .header{
         display: flex;
+        justify-content: space-between;
         background-color: #fff;
-        width: 100%;
+        width: 104%;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .fixed-header {
+     position: fixed;
+     top: 0;
+     width: 100%;
+     background-color: white;
+  /* Adicione outros estilos conforme necessário */
+    }
+
+    .header-logo-container{
+        display: flex;
+        align-items: center;
+        margin-left: 7%;
+        padding: 14px;
+        padding-top: 21px;
+    }
+
+    .header-logo-container img{
+        width: 170px;
+    }
+
+    .header-button-container{
+        display: flex;
+        align-items: center;
+        margin-right: 7%;
+    }
+
+    .header-button{
+        height: 55px;
+        width: 200px;
     }
 
     .home-section{
@@ -112,6 +257,7 @@ export default {
         align-items: center;
         justify-content: space-evenly;
         height: 80vh;
+        width: 100%;
         margin-top: 60px;
     }
     .info-container{
@@ -131,7 +277,7 @@ export default {
         text-align: left;
         font-weight: bold;
 
-        animation: fadeInRight 1s ease-out forwards;
+        /* animation: fadeInRight 1s ease-out forwards; */
     }
     .h1-price{
         position: relative;
@@ -147,7 +293,7 @@ export default {
         background-color: #082777;
         color: #ffff;
         border-radius: 12px;
-        animation: fadeInRight 1s ease-out forwards;
+        /* animation: fadeInRight 1s ease-out forwards; */
         box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
     }
     @keyframes fadeInRight {
@@ -179,7 +325,7 @@ export default {
 
     }
     .home-button{
-        animation: fadeIn 1.6s ease-out forwards;
+        /* animation: fadeIn 1.6s ease-out forwards; */
 
         width: 80%;
         padding-left: 35px;
@@ -210,7 +356,7 @@ export default {
         align-items: center;
         justify-content: center;
 
-        animation: fadeIn 1.8s ease-out forwards;
+        /* animation: fadeIn 1.8s ease-out forwards; */
        
     }
     .img-container img{
@@ -221,6 +367,86 @@ export default {
         max-height: 80vh;
     }
 
+    .section-produto{
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+    
+    }
+
+    .produto-header{
+        display: flex;
+        width: 73.77%;
+        justify-content: space-between;
+    }
+    .produto-title p{
+        font-weight: bold;
+        font-size: 52px;
+        color: #082777;
+        text-align: left;
+    }
+    .produto-logo{
+        display: flex;
+        width: 30%;
+    }
+
+
+    .produto-title{
+        width: 70%;
+    }
+
+    .list-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+        font-size: 22px;
+        color: #082777;
+    }
+
+    .list-item p{
+        text-align: left;
+        width: 100%;
+        margin-left: 20px;
+    
+    }
+
+    .produto-info{
+        display: flex;
+        width: 73%;
+        justify-content:flex-start;
+    
+    }
+
+    .button-produto{
+        width: 350px;
+        height: 63px;
+    }
+
+    .h2-text{
+        color:#082777;
+        font-size: 25px;
+        text-align: left;
+        font-weight: bold;
+
+        /* animation: fadeInRight 1s ease-out forwards; */
+
+        position: relative;
+        top: -40px;
+    }
+
+
+    .preços{
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+    }
 
     @media  screen and (max-width: 800px) {
         .home-section{
@@ -244,18 +470,50 @@ export default {
         max-width: 80%;
         }
 
+        .section-produto{
+            margin-top: 400px;
+            align-items: center;
+        }
+        .produto-header{
+            flex-direction: column;
+            text-align: left;
+            margin-left: 20%;
+            
+        }
+
+        .produto-header p{
+            text-align: center;
+            width: 100%;
+        }
+
+        .produto-logo{
+            width: 80%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .produto-logo img{
+            padding-right: 30px;
+        }
+
+        .h2-text{
+            top: 0px;
+            text-align: center;
+        }
+
+        .h1-price-produto{
+            margin-top: 50px;
+        }
+
+        .button-produto{
+            margin-left: 7%;
+            margin-top: 20px;
+        }
+
         .preços{
             flex-direction: column;
-            margin-top: 680px;
+            margin-top: 460px;
         }
-    }
-
-    .preços{
-        
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 80vh;
     }
 
 
