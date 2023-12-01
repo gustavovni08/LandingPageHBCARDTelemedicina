@@ -1,5 +1,19 @@
 <template>
     <div class="main-container">
+        <header class="header">
+            <div class="logo-container">
+                <img :src="require('@/assets/HbcardTeleMedicina.svg')" alt="">
+            </div>
+            <div class="button-container">
+                <div class="button header-button"
+                @click="irParaPrecos"
+                >
+                Assine já
+            </div>
+            </div>
+        </header>
+
+
         <section class="home-section">
 
             <div class="info-container">
@@ -69,7 +83,7 @@ export default {
     methods:{
         irParaPrecos(){
             const precos = document.querySelector('.preços')
-            precos.scrollIntoView({behavior:'smooth'})
+            precos.scrollIntoView({behavior:'smooth', block:'end'})
         }
     },
 
@@ -85,6 +99,12 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+    }
+
+    .header{
+        display: flex;
+        background-color: #fff;
+        width: 100%;
     }
 
     .home-section{
