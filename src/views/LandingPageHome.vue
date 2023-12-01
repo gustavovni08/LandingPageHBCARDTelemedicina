@@ -73,6 +73,43 @@
 
         </section>
 
+        <section class="section-produto">
+            <div class="produto-header">
+                <div class="produto-title">
+                    <p>Economize com a <br> nossa paceria</p>
+                </div>
+
+                <div class="produto-logo">
+                    <img :src="require('@/assets/tokio-marine-seguradora.svg')" alt="AlbertEinstein">
+                </div>
+            </div>
+            <div class="produto-info">
+                <div class="produto-itens-container">
+                    <div class="info-container">
+                <div class="h1-container">
+                    <p class="h2-text">HACARD em parceria com a <br>
+                        Tokio Marine Seguradora oferece a <br>
+                        telemadicina do Einstein com</p>
+                    <h1 class="h1-price">87%OFF</h1>
+                </div>
+
+                    </div>
+                    <div class="buton-container">
+                        <div class="button button-produto">
+                            ASSINE AGORA
+                        </div>
+                    </div>
+                </div>
+
+                <div class="produto-video-container">
+
+                </div>
+            </div>
+
+
+
+        </section>
+
 
         <br>
         
@@ -356,6 +393,18 @@ export default {
     .button-produto{
         width: 350px;
         height: 63px;
+    }
+
+    .h2-text{
+        color:#082777;
+        font-size: 25px;
+        text-align: left;
+        font-weight: bold;
+
+        animation: fadeInRight 1s ease-out forwards;
+
+        position: relative;
+        top: -40px;
     }
 
 
