@@ -131,8 +131,18 @@
 
         </section>
 
+        <section class="faq-section">
+            <div class="faq-container"
+            v-for="(item, index) in faq" :key="index">
+                <LandingPageFaq
+                :label="item.label"
+                :text="item.text"
+                />
+            </div>
+        </section>
 
-        <br>
+
+        <div class="here"></div>
         
         <section class="preços">
             <div class="card-container"
@@ -152,6 +162,7 @@
 <script>
 
 import LandingPageCardPrecos from '@/components/LandingPageCardPrecos.vue';
+import LandingPageFaq from '@/components/LandingPageFaq.vue';
 
 export default {
     data(){
@@ -178,13 +189,21 @@ export default {
             ],
 
             isFixed: false,
+
+            faq:[
+                {
+                    label:'hbcard é muito bombombom',
+                    text:'muito bom demaise'
+
+                }
+            ]
         }
     },
 
     methods:{
         irParaPrecos(){
-            const precos = document.querySelector('.preços')
-            precos.scrollIntoView({behavior:'smooth', block:'end'})
+            const precos = document.querySelector('.here')
+            precos.scrollIntoView({behavior:'smooth'})
         },
 
         handleScroll() {
@@ -198,7 +217,7 @@ export default {
     },
 
 
-    components:{LandingPageCardPrecos}
+    components:{LandingPageCardPrecos, LandingPageFaq}
 }
 </script>
 
@@ -226,6 +245,7 @@ export default {
      top: 0;
      width: 100%;
      background-color: white;
+     z-index: 1000;
   /* Adicione outros estilos conforme necessário */
     }
 
@@ -374,6 +394,7 @@ export default {
         width: 100%;
         justify-content: center;
         align-items: center;
+        margin-top: 60px;
 
     
     }
@@ -439,6 +460,10 @@ export default {
         top: -40px;
     }
 
+    .here{
+        height: 7vh;
+        background-color: pink;
+    }
 
     .preços{
         
@@ -446,7 +471,11 @@ export default {
         align-items: center;
         justify-content: center;
         height: 80vh;
+        margin-top: 60px;
     }
+
+
+
 
     @media  screen and (max-width: 800px) {
         .home-section{
@@ -499,15 +528,28 @@ export default {
         .h2-text{
             top: 0px;
             text-align: center;
+            margin-left: 7%;
+            width: 100%;
         }
 
         .h1-price-produto{
             margin-top: 50px;
+            top:-20px;
+            margin-left: 2%;
+            
         }
 
         .button-produto{
             margin-left: 7%;
             margin-top: 20px;
+        }
+
+        .buton-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            
         }
 
         .preços{
