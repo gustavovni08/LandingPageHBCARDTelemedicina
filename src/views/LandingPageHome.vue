@@ -132,11 +132,26 @@
         </section>
 
         <section class="faq-section">
+
+            <div class="faq-header">
+                <h1 class="faq-title"> Duvidas Frequentes</h1>
+            </div>
             <div class="faq-container"
             v-for="(item, index) in faq" :key="index">
                 <LandingPageFaq
                 :label="item.label"
                 :text="item.text"
+                />
+            </div>
+        </section>
+
+        <section class="section-depoimentos">
+            <div class="depoimento-container"
+            v-for="(depoimento, index) in depoimentos" :key="index">
+                <LandingPageDepoimentoCard
+                :img="depoimento.img"
+                :nome="depoimento.nome"
+                :text="depoimento.text"
                 />
             </div>
         </section>
@@ -161,24 +176,25 @@
 
 <script>
 
-import LandingPageCardPrecos from '@/components/LandingPageCardPrecos.vue';
 import LandingPageFaq from '@/components/LandingPageFaq.vue';
+import LandingPageCardPrecos from '@/components/LandingPageCardPrecos.vue';
+import LandingPageDepoimentoCard from '@/components/LandingPageDepoimentoCard.vue';
 
 export default {
     data(){
         return{
             planos:[
                 {
-                    einsteinPrice: 129.90,
-                    title: 'Individual',
-                    price: 39.90,
-                    users: 0,
-                },
-                {
                     einsteinPrice: 99.90,
                     title: 'Familiar',
                     price: 29.90,
                     users: 2,
+                },
+                {
+                    einsteinPrice: 129.90,
+                    title: 'Individual',
+                    price: 39.90,
+                    users: 0,
                 },
                 // {
                 //     einsteinPrice: 0,
@@ -194,8 +210,28 @@ export default {
                 {
                     label:'hbcard é muito bombombom',
                     text:'muito bom demaise'
+                },
+                {
+                    label:'hbcard é muito bombombom',
+                    text:'muito bom demaise'
+                },
+                {
+                    label:'hbcard é muito bombombom',
+                    text:'muito bom demaise'
+                },
+            ],
 
-                }
+            depoimentos:[
+                {
+                    img:'postimonialTemplate.png',
+                    nome:'Yuki Toma Giraud',
+                    text:'Meu nome é Yuki Toma Giraud, tive uma experiência muito positiva com o HBCARD, usando a Telemedicina. Após peregrinar por algumas consultas presenciais que não surgiu nenhum efeito, usei à telemedicina pois estava em Buenos Aires e, o médico solicitou um exame basico(fezes), fiz, mandei p ele no mesmo e-mail e, ele me receitou um remédio, resolvendo um problema que já vinha há mais de 3 meses, onde todos os outros médicos dizia que era virose.',
+                },
+                {
+                    img:'postimonialTemplate.png',
+                    nome:'Yuki Toma Giraud',
+                    text:'Meu nome é Yuki Toma Giraud, tive uma experiência muito positiva com o HBCARD, usando a Telemedicina. Após peregrinar por algumas consultas presenciais que não surgiu nenhum efeito, usei à telemedicina pois estava em Buenos Aires e, o médico solicitou um exame basico(fezes), fiz, mandei p ele no mesmo e-mail e, ele me receitou um remédio, resolvendo um problema que já vinha há mais de 3 meses, onde todos os outros médicos dizia que era virose.',
+                },
             ]
         }
     },
@@ -217,7 +253,7 @@ export default {
     },
 
 
-    components:{LandingPageCardPrecos, LandingPageFaq}
+    components:{LandingPageCardPrecos, LandingPageDepoimentoCard, LandingPageFaq}
 }
 </script>
 
@@ -460,8 +496,35 @@ export default {
         top: -40px;
     }
 
+    .faq-section{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 60px;
+    }
+
+    .faq-header{
+        display: flex;
+        justify-content: center;
+    }
+    .faq-title {
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 52px;
+        color: #082777;
+        text-align: left;
+    }
+
+    .section-depoimentos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 73%;
+    }
+
     .here{
-        height: 7vh;
+        height: 2vh;
         background-color: pink;
     }
 
@@ -506,13 +569,15 @@ export default {
         .produto-header{
             flex-direction: column;
             text-align: left;
-            margin-left: 20%;
+
             
         }
 
         .produto-header p{
             text-align: center;
             width: 100%;
+            /* margin-left: 20%; */
+            font-size: 50px;
         }
 
         .produto-logo{
@@ -521,14 +586,25 @@ export default {
             justify-content: center;
         }
 
-        .produto-logo img{
-            padding-right: 30px;
+        .produto-logo{
+            width: 100%;
+            margin: 10px;
+            margin-left: 0px;
+
         }
 
+        .produto-info{
+            justify-content: center;
+        }
+
+        .produto-title{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
         .h2-text{
             top: 0px;
             text-align: center;
-            margin-left: 7%;
             width: 100%;
         }
 
@@ -540,7 +616,6 @@ export default {
         }
 
         .button-produto{
-            margin-left: 7%;
             margin-top: 20px;
         }
 
@@ -552,9 +627,22 @@ export default {
             
         }
 
+        .faq-section{
+            margin-top: 200px;
+            margin-bottom: 0px;
+            justify-content: center;
+        }
+
+        .faq-title{
+            text-align: center;
+        }
+        .here{
+            height: 2vh;
+        }
+
         .preços{
             flex-direction: column;
-            margin-top: 460px;
+            margin-top: 400px;
         }
     }
 

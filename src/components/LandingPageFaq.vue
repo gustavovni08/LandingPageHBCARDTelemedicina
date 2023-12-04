@@ -8,6 +8,7 @@
                 {{ icon }}
             </span>
         </div>
+        <transition name="fade"></transition>
         <div class="resposta-container" v-show="showAnswer">
             <p> {{text}} </p>
         </div>
@@ -47,14 +48,16 @@ export default {
 
 .faq-container{
     display: flex;
-    width: 71.3vw;
-    height: 9vh;
+    width: 73.3vw;
+    /* height: 9vh; */
 
     align-items: center;
     justify-content: center;
 
     flex-direction: column;
     cursor: pointer;
+
+    margin: 20px;
 
 }
 
@@ -69,6 +72,7 @@ export default {
     background-color: #082777;
     border-radius: 8px;
     box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
 
     z-index: 100;
 }
@@ -94,12 +98,26 @@ export default {
     font-weight: bold;
     border-radius: 0px 0px 8px 8px;
     box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
+    border: solid  rgba(0, 0, 0, 0.2) 0.6px;
     z-index: 10;
+    margin-bottom: 10px;
+    transition: height 0.5s ease;
     
 }
 
 .resposta-container p{
     padding-left: 7%;
+}
+
+
+/* Adicione as classes de transição */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active no <2.1.8 */ {
+  opacity: 0;
 }
 
 
