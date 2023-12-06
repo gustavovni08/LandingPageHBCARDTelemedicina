@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="produto-logo">
-                    <img :src="require('@/assets/AlbertEinstein.svg')" alt="AlbertEinstein">
+                    <img :src="require('@/assets/albertEinstein.svg')" alt="AlbertEinstein">
                 </div>
             </div>
             <div class="produto-info">
@@ -146,6 +146,8 @@
         </section>
 
         <section class="section-depoimentos">
+            <h1 class="faq-title"> Reviews dos clientes</h1>
+
             <div class="depoimento-container"
             v-for="(depoimento, index) in depoimentos" :key="index">
                 <LandingPageDepoimentoCard
@@ -156,6 +158,21 @@
             </div>
         </section>
 
+        <section class="video-einstein">
+            <div class="video-einstein-title-container">
+                <h1 class="faq-title"> Qualidade Albert Einstein</h1>
+            </div>
+            <div class="video-einstein-container">
+                <iframe 
+                :width="iframe.width" 
+                :height="iframe.heigth" 
+                src="https://www.youtube.com/embed/9mswJ1BiAZ0?si=dIsbzfpangdNnjCq" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen></iframe>
+            </div>
+        </section>
 
         <div class="here"></div>
         
@@ -208,31 +225,44 @@ export default {
 
             faq:[
                 {
-                    label:'hbcard é muito bombombom',
-                    text:'muito bom demaise'
+                    label:'O que é Telemedicina HBCARD?',
+                    text:'Telemedicina hbcard é o seu pronto atendimento virtual, disponibilizando consultas com médicos do hospital israelita Albert Einstein pelo seu computador ou celular de qualquer lugar.'
                 },
                 {
-                    label:'hbcard é muito bombombom',
-                    text:'muito bom demaise'
+                    label:'Quem pode usar?',
+                    text:'Qualquer pessoa acima de 14 anos.'
                 },
                 {
-                    label:'hbcard é muito bombombom',
-                    text:'muito bom demaise'
+                    label:'Como assinar?',
+                    text:'Acesse o site telemedicina.hbcard.com.br E assine 100% online'
+                },
+                {
+                    label:'Tem taxa de adesão?',
+                    text:'Sim, no primeiro pagamento é somado a taxa de adesão de valor igual a mensalidade.'
+                },
+                {
+                    label:'Quando começar a usar?',
+                    text:'Adesões realizadas entre dia 1 e dia 25 de cada mês a vigência se dá apartar do dia 10 de mês subsequente com consultas ilimitadas com consultas Einstein de domingo a domingo.'
                 },
             ],
 
             depoimentos:[
                 {
-                    img:'postimonialTemplate.png',
-                    nome:'Yuki Toma Giraud',
+                    img:'yuki.png',
+                    nome:'Yuki Toma Giraud, Buenos Aires',
                     text:'Meu nome é Yuki Toma Giraud, tive uma experiência muito positiva com o HBCARD, usando a Telemedicina. Após peregrinar por algumas consultas presenciais que não surgiu nenhum efeito, usei à telemedicina pois estava em Buenos Aires e, o médico solicitou um exame basico(fezes), fiz, mandei p ele no mesmo e-mail e, ele me receitou um remédio, resolvendo um problema que já vinha há mais de 3 meses, onde todos os outros médicos dizia que era virose.',
                 },
                 {
-                    img:'postimonialTemplate.png',
-                    nome:'Yuki Toma Giraud',
-                    text:'Meu nome é Yuki Toma Giraud, tive uma experiência muito positiva com o HBCARD, usando a Telemedicina. Após peregrinar por algumas consultas presenciais que não surgiu nenhum efeito, usei à telemedicina pois estava em Buenos Aires e, o médico solicitou um exame basico(fezes), fiz, mandei p ele no mesmo e-mail e, ele me receitou um remédio, resolvendo um problema que já vinha há mais de 3 meses, onde todos os outros médicos dizia que era virose.',
+                    img:'zenilson.png',
+                    nome:'Zenilson Oliveira de Lima, Maceió',
+                    text:'Sou vendedor e utilizo muito a minha voz, um certo dia minha garganta estava bastante inflamada, e em cinco minutos de atendimento na TELEMEDICINA a médica me examinou, enviou por email o atestado, a receita e ainda mais o resumo da minha consulta. Tudo isso no conforto do meu lar com um atendimento rápido, eficaz e com meu problema solucionado!',
                 },
-            ]
+            ],
+
+            iframe:{
+                width:854,
+                heigth:480,
+            }
         }
     },
 
@@ -246,10 +276,25 @@ export default {
       // Verifica se a posição de rolagem é maior que a posição do cabeçalho
         this.isFixed = window.scrollY > this.$el.querySelector("header").offsetTop;
         },
+
+        updateDimensions(){
+            const screenWidth = window.innerWidth
+
+            if (screenWidth < 800){
+                this.iframe.width = 640
+                this.iframe.heigth = 360
+            } else {
+                this.iframe.width = 854
+                this.iframe.heigth = 480
+            }
+        }
     },
 
     mounted() {
     window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("resize", this.updateDimensions)
+
+    this.updateDimensions()
     },
 
 
@@ -520,17 +565,19 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 73%;
+        width: 80%;
     }
 
     .here{
-        height: 2vh;
+        height: 10vh;
+        margin: 40px;
         background-color: pink;
     }
 
     .preços{
         
         display: flex;
+        /* flex-direction: column; */
         align-items: center;
         justify-content: center;
         height: 80vh;
@@ -637,7 +684,7 @@ export default {
             text-align: center;
         }
         .here{
-            height: 2vh;
+            height: 10vh;
         }
 
         .preços{

@@ -72,7 +72,7 @@ export default {
     background-color: #082777;
     border-radius: 8px;
     box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
+    margin-top: 10px;
 
     z-index: 100;
 }
@@ -102,11 +102,13 @@ export default {
     z-index: 10;
     margin-bottom: 10px;
     transition: height 0.5s ease;
-    
+    align-items: center;
+    justify-content: center;
 }
 
 .resposta-container p{
-    padding-left: 7%;
+    margin: 10px;
+    max-width: 500px;
 }
 
 

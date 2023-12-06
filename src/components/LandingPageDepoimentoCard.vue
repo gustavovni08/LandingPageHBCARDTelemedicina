@@ -8,12 +8,16 @@
 
             <div class="text-container">
                 <p>
+                    <strong>"</strong>
                     {{text}}
+                    <strong>"</strong>
                 </p>
+                    
             </div>
 
             <div class="nome-container">
                 <p>
+                    <strong>-</strong>
                     {{ nome }}
                 </p>
             </div>
@@ -34,11 +38,11 @@ export default {
 </script>
 <style scoped>
     .card-container{
+        z-index: 2;
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
         margin-bottom: 50px;
-        z-index: 2;
+        justify-content: space-between;
 
     }
 
@@ -48,18 +52,28 @@ export default {
     }
 
     .img-container img{
-        width: 70%;
+        /* width: 70%; */
+        width: 500px;
     }
 
 
     .info-container{
-        width: 50%;
+        /* width: 80%; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
         padding: 15px;
         padding-left: 22px;
         border: solid  rgba(0, 0, 0, 0.2) 0.6px;
         box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
         border-radius: 12px;
         background-color: #ffff;
+
+        width: 530px;
+        height: 260px;
+        margin-right: 60px;
+
+    
     }
 
     .text-container{
@@ -84,6 +98,7 @@ export default {
         .info-container{
             width: 100%;
             margin-top: 40px;
+            margin-right: 0px;
         }
 
         .img-container{
@@ -95,6 +110,17 @@ export default {
         .text-container{
             text-align: center;
         }
+
+        .img-container img{
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nome-container{
+            justify-content: center;
+            padding-left: 10%;
+        }
+
         
     }
 </style>
