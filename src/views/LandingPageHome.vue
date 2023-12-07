@@ -110,7 +110,7 @@
                     <p class="h2-text">HACARD em parceria com a <br>
                         Tokio Marine Seguradora oferece a <br>
                         telemadicina do Einstein com</p>
-                    <h1 class="h1-price h1-price-produto">87%OFF</h1>
+                    <h1 class="h1-price h1-price-produto">70%OFF</h1>
                 </div>
 
                     </div>
@@ -166,7 +166,7 @@
                 <iframe 
                 :width="iframe.width" 
                 :height="iframe.heigth" 
-                src="https://www.youtube.com/embed/9mswJ1BiAZ0?si=dIsbzfpangdNnjCq" 
+                src="https://www.youtube.com/embed/gIf5cdwdgz0?si=w5hyJhMjdCvsf8mB" 
                 title="YouTube video player" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -230,7 +230,7 @@ export default {
                 },
                 {
                     label:'Quem pode usar?',
-                    text:'Qualquer pessoa acima de 14 anos.'
+                    text:'Qualquer pessoa acima de 14 até 70 anos.'
                 },
                 {
                     label:'Como assinar?',

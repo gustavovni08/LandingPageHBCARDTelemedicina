@@ -65,7 +65,8 @@
 
 
         </div>
-        <div class="button-container">
+        <div class="button-container"
+        @click="navegar">
             Assine já
         </div>
     </div>
@@ -77,9 +78,18 @@ export default {
         users:Number,
         title:String,
         einsteinPrice:Number,
+    },
+
+    methods:{
+        navegar(){
+            if (this.title === 'Individual') {
+            this.$router.push('/PlanoIndividual');
+      }
+        }
     }
 }
 </script>
+
 <style scoped lang="css">
     .card-container{
         display: flex;

@@ -1,14 +1,18 @@
 <template>
-  <LandingPageHome/>
+  <RouterView/>
+  <!-- <CheckoutIndividual/> -->
+  <!-- <LandingPageHome/> -->
 </template>
 
 <script>
-import LandingPageHome from './views/LandingPageHome.vue'
+// import LandingPageHome from './views/LandingPageHome.vue'
+// import CheckoutIndividual from './views/CheckoutIndividual.vue';
 
 export default {
   name: 'App',
   components: {
-    LandingPageHome
+    // LandingPageHome,
+    //  CheckoutIndividual
   }
 }
 </script>
