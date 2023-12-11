@@ -84,7 +84,9 @@ export default {
         navegar(){
             if (this.title === 'Individual') {
             this.$router.push('/PlanoIndividual');
-      }
+            } else {
+                this.$router.push('/PlanoFamiliar')
+            }
         }
     }
 }
