@@ -17,6 +17,7 @@
 import SigninButton from '@/components/SigninButton.vue';
 import FormMultiplier from '@/components/FormMultiplier.vue';
 import CheckoutFormContainer from '@/components/CheckoutFormContainer.vue';
+import api from "@/services/api"
 
 export default {
     components:{
@@ -49,12 +50,61 @@ export default {
     },
 
     methods:{
-        coletarDadosDoFormulario() {
-      // Chama o método submitForm do componente filho usando a referência
-        // this.$refs.formContainer.forEach((formContainer) => {
-        //     formContainer.submitForm()
-        // });
+    coletarDadosDoFormulario() {
+
         console.log(this.forms)
+
+        for(let form of this.forms){
+            const dadosUsuario = {
+            cpf: form.cpf,
+            nome: form.nome,
+            email: form.email,
+            telefone: form.phone,
+            dataNascimento: form.dob,
+        };
+
+        this.adicionarUsuario(dadosUsuario)
+        }
+    
+        
+        this.redirectPagamento()
+
+    
+    },
+
+    redirectPagamento(){
+
+    // Construir o URL de redirecionamento com base no multiplier
+      const baseUrl = 'https://sandbox.asaas.com/c/';
+      const multiplier = this.FormMultiplier;
+      const urlMappings = {
+        2: 'd4ki2d2dceh0w4ds',
+        3: 'ek4w7as99stn7484',
+        4: 'uhz7npl1rllrg33b',
+        5: 'qptm6y348xayostz',
+      };
+
+
+      const code = urlMappings[multiplier];
+
+
+      window.location.href = `${baseUrl}${code}`;
+
+    },
+
+    async adicionarUsuario(dadosUsuario) {
+      try {
+        // Faz a requisição POST para adicionar o usuário
+        const response = await api.post('/adicionar-usuario', dadosUsuario);
+
+        // Trate a resposta conforme necessário
+        console.log('Usuário adicionado com sucesso:', response.data);
+
+        // Redirecione ou faça outras ações conforme necessário
+      } catch (error) {
+        console.error('Erro ao adicionar usuário:', error.message);
+        // Lide com o erro conforme necessário
+      }
     },
 
     atualizarFormulario(index, newFormData) {
@@ -62,7 +112,7 @@ export default {
         this.forms[index] = newFormData
     },
 
-        handleMultiplierChange(newMultiplier) {
+    handleMultiplierChange(newMultiplier) {
           // Lidar com o novo valor do multiplicador
           console.log("Novo valor do multiplicador:", newMultiplier);
           // Atualizar o valor no componente pai
@@ -75,7 +125,7 @@ export default {
               dob: "",
               phone: "",
             }));
-        },
+    },
     }
 }
 </script>

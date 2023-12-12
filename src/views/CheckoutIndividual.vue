@@ -12,6 +12,7 @@
 
 import SigninButton from '@/components/SigninButton.vue';
 import CheckoutFormContainer from '@/components/CheckoutFormContainer.vue';
+import api from "@/services/api"
 
 export default {
     components:{
@@ -32,14 +33,74 @@ export default {
     },
 
     methods:{
-        coletarDadosDoFormulario() {
-        console.log(this.form)
+    //     coletarDadosDoFormulario() {
+    //     console.log(this.form)
+
+        
+    // },
+
+    coletarDadosDoFormulario() {
+
+    console.log(this.forms)
+
+    const dadosUsuario = {
+        cpf: this.form.cpf,
+        nome: this.form.nome,
+        email: this.form.email,
+        telefone: this.form.phone,
+        dataNascimento: this.form.dob,
+    };
+
+    this.adicionarUsuario(dadosUsuario)
+    // this.redirectPagamento()
+
+
+    },
+
+    redirectPagamento(){
+
+    window.location.href = 'https://sandbox.asaas.com/c/u5d4uhipeo48dtcg'
+
+    },
+
+    async adicionarUsuario(dadosUsuario) {
+        try {
+        // Faz a requisição POST para adicionar o usuário
+        const response = await api.post('/adicionar-usuario', dadosUsuario);
+        
+        // Trate a resposta conforme necessário
+        console.log('Usuário adicionado com sucesso:', response.data);
+        
+        // Redirecione ou faça outras ações conforme necessário
+        } catch (error) {
+        console.error('Erro ao adicionar usuário:', error.message);
+        // Lide com o erro conforme necessário
+        }
     },
 
     atualizarFormulario(newFormData) {
         this.form = newFormData
     },
 
+    async listarUsuarios() {
+        try {
+            const {data} = await api.get('/listar-usuarios')
+            console.log(data)
+        } catch (error) {
+            console.error(error)
+        }
+    // try {
+    //   console.log('oi');
+    //   const {data} = await axios.get('http://localhost:3000/listar-usuarios');
+    //   console.log('Lista de usuários:', data);
+    // } catch (error) {
+    //   console.error('Erro ao listar usuários:', error.message);
+    // }
+  },
+  },
+    mounted() {
+        this.listarUsuarios();
+        console.log('oi')
     }
 }
 </script>
