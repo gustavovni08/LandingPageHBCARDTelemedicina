@@ -5,7 +5,8 @@
         <CheckoutFormContainer ref="formContainer"
         :form="form"
         @form-data-updated="atualizarFormulario($event)"/>
-        <SigninButton @click="coletarDadosDoFormulario"/>
+        <SigninButton @click="enviarFormulario"
+        :class="{ 'loading': loading }"/>
     </div>
 </template>
 <script>
@@ -28,16 +29,39 @@ export default {
                 cpf: '',
                 dob: '',
                 phone: '',
-            }
+            },
+
+            value: 58.9,
+
+            loading: false,
         }
     },
 
     methods:{
-    //     coletarDadosDoFormulario() {
-    //     console.log(this.form)
 
-        
-    // },
+    async enviarFormulario() {
+
+        for (const key in this.form) {
+        if (this.form[key] === '') {
+        window.alert(`Informe seu ${key}`)
+        } else {
+                try {
+                this.coletarDadosDoFormulario();
+                setTimeout(() => {
+                    this.gerarCobranca();
+                }, 15000);
+
+                setTimeout(() => {
+                    this.redirectPagamento();
+                }, 30000);
+            } catch (error) {
+                console.error(error);
+            } 
+        }
+        }
+
+       
+    },
 
     coletarDadosDoFormulario() {
 
@@ -49,18 +73,40 @@ export default {
         email: this.form.email,
         telefone: this.form.phone,
         dataNascimento: this.form.dob,
+        // value: 58.9
     };
 
     this.adicionarUsuario(dadosUsuario)
-    // this.redirectPagamento()
-
 
     },
 
-    redirectPagamento(){
+    async gerarCobranca(){
+        try {
 
-    window.location.href = 'https://sandbox.asaas.com/c/u5d4uhipeo48dtcg'
+            const body = {
+                cpf: this.form.cpf,
+                value: this.value
+            }
 
+            const response = api.post('/gerar-cobranca', body)
+            console.log('cobrança criada com sucesso:', response.data)
+            this.redirectPagamento()
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    async redirectPagamento() {
+    try {
+        const cpf = this.form.cpf;
+        console.log(cpf)
+        const response = await api.get(`/retornar-link-de-cobranca?cpf=${cpf}`);
+        const link = response.data.data
+        console.log(link); // Verifique se os dados estão dentro de response.data
+        window.location.href = link; // Se deseja redirecionar após receber o link
+    } catch (error) {
+        console.log(error);
+    }
     },
 
     async adicionarUsuario(dadosUsuario) {
@@ -100,7 +146,7 @@ export default {
   },
     mounted() {
         this.listarUsuarios();
-        console.log('oi')
+        console.log(this.form.cpf)
     }
 }
 </script>
@@ -135,4 +181,9 @@ export default {
         margin-left: 5px;
         margin-right: 5px;
     }
+
+    .loading {
+    /* Adicione estilos da animação de carregamento aqui */
+    cursor: not-allowed; /* Opcional: Altere o cursor enquanto estiver carregando */
+}
 </style>
