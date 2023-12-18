@@ -9,7 +9,7 @@
         :key="index"
         :form="form"
         @form-data-updated="atualizarFormulario(index, $event)"/>
-        <SigninButton @click="coletarDadosDoFormulario"/>
+        <SigninButton @click="enviarFormulario"/>
     </div>
 </template>
 <script>
@@ -45,17 +45,49 @@ export default {
             },
             
             ],
+
+            value: 58.9,
+
             FormMultiplier: 2,
         }
     },
 
     methods:{
+
+    enviarFormulario(){
+        try {
+            this.coletarDadosDoFormulario();
+            setTimeout(() => {
+                this.gerarCobranca()
+            }, 20000)
+
+            setTimeout(() => {
+                this.redirectPagamento()
+            }, 40000)
+
+            } catch (error) {
+                console.error(error)
+            } 
+    },
+    
     coletarDadosDoFormulario() {
 
         console.log(this.forms)
 
-        for(let form of this.forms){
-            const dadosUsuario = {
+        for (let form of this.forms) {
+        // Verificar se algum campo está vazio
+        if (
+            form.nome === '' ||
+            form.email === '' ||
+            form.cpf === '' ||
+            form.dob === '' ||
+            form.phone === ''
+        ) {
+            window.alert('Preencha todos os campos antes de enviar.');
+            return; // Impede a inserção caso haja campos vazios
+        }
+
+        const dadosUsuario = {
             cpf: form.cpf,
             nome: form.nome,
             email: form.email,
@@ -66,29 +98,52 @@ export default {
         this.adicionarUsuario(dadosUsuario)
         }
     
-        
-        this.redirectPagamento()
-
-    
     },
 
-    redirectPagamento(){
+    async gerarCobranca(){
+        try {
+
+            const body = {
+                cpf: this.forms[0].cpf,
+                value: this.value * this.FormMultiplier
+            }
+
+            const response = api.post('/gerar-cobranca', body)
+            console.log('cobrança criada com sucesso:', response.data)
+            this.redirectPagamento()
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    async redirectPagamento(){
+
+        try {
+        const cpf = this.forms[0].cpf;
+        console.log(cpf)
+        const response = await api.get(`/retornar-link-de-cobranca?cpf=${cpf}`);
+        const link = response.data.data
+        console.log(link); // Verifique se os dados estão dentro de response.data
+        window.location.href = link; // Se deseja redirecionar após receber o link
+    } catch (error) {
+        console.log(error);
+    }
 
     // Construir o URL de redirecionamento com base no multiplier
-      const baseUrl = 'https://sandbox.asaas.com/c/';
-      const multiplier = this.FormMultiplier;
-      const urlMappings = {
-        2: 'd4ki2d2dceh0w4ds',
-        3: 'ek4w7as99stn7484',
-        4: 'uhz7npl1rllrg33b',
-        5: 'qptm6y348xayostz',
-      };
+    //   const baseUrl = 'https://sandbox.asaas.com/c/';
+    //   const multiplier = this.FormMultiplier;
+    //   const urlMappings = {
+    //     2: 'd4ki2d2dceh0w4ds',
+    //     3: 'ek4w7as99stn7484',
+    //     4: 'uhz7npl1rllrg33b',
+    //     5: 'qptm6y348xayostz',
+    //   };
 
 
-      const code = urlMappings[multiplier];
+    //   const code = urlMappings[multiplier];
 
 
-      window.location.href = `${baseUrl}${code}`;
+    //   window.location.href = `${baseUrl}${code}`;
 
     },
 
