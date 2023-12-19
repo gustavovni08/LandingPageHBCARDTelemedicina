@@ -1,6 +1,6 @@
-<template lang="">
+<template>
 
-        <div class="button" @click="submitForm">Enviar</div>
+        <div class="button">Enviar</div>
 
 </template>
 <script>

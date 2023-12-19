@@ -48,7 +48,12 @@ export default {
   methods: {
     submitForm() {
       // Aqui você pode adicionar a lógica para lidar com os dados do formulário
-      console.log('Dados do formulário:', this.formData);
+      if( this.name === '' || this.email === '' || this.cpf === '' || this.dob === '' || this.phone === ''){
+        console.log('preencha seus dados')
+      } else {
+        console.log('Dados do formulário:', this.formData);
+      }
+      
     },
   },
 };

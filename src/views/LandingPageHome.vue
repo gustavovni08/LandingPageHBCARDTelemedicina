@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="produto-logo">
-                    <img :src="require('@/assets/albertEinstein.svg')" alt="AlbertEinstein">
+                    <img :src="require('@/assets/AlbertEinstein.svg')" alt="AlbertEinstein">
                 </div>
             </div>
             <div class="produto-info">
