@@ -1,10 +1,32 @@
 <template>
 
-        <div class="button">Enviar</div>
+        <div class="button" @click="setLoading"
+        :class="{ 'loading': loading }"
+        :disable="loading">
+        {{ loading ? 'Carregando...' : 'Enviar' }}
+        </div>
 
 </template>
 <script>
 export default {
+
+    data(){
+        return{
+            loading: false
+        }
+    },
+
+    methods:{
+        setLoading(){
+     
+            this.loading = true
+
+            setTimeout(() =>{
+                this.loading = false
+            },  600000)
+            
+         },
+    }
     
 }
 </script>
@@ -31,5 +53,10 @@ export default {
 
     .button:hover{
         background-color: #feca62;
+    }
+
+    .loading {
+        background-color: #feca62;
+        cursor: not-allowed; 
     }
 </style>

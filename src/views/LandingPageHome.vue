@@ -56,7 +56,7 @@
                        </div>
                        <div class="list-item">
                             <span class="material-symbols-outlined">
-                             emergency
+                             emergency  
                             </span>
                             <p>Parceria Hospital AlbertEinstein</p>
                        </div>
@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="produto-video-container">
-
+                    
                 </div>
             </div>
 
@@ -123,12 +123,83 @@
                 </div>
 
                 <div class="produto-video-container">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@hbcard/video/7312920835168242950" data-video-id="7312920835168242950" style="max-width: 505px;min-width: 225px;" > 
+                        <section> 
+                            <a target="_blank" title="@hbcard" href="https://www.tiktok.com/@hbcard?refer=embed">
+                                @hbcard
+                            </a> 
+                            <a title="telemedicina" target="_blank" href="https://www.tiktok.com/tag/telemedicina?refer=embed">
+                                #telemedicina
+                            </a> 
+                            <a title="segurança" target="_blank" href="https://www.tiktok.com/tag/seguran%C3%A7a?refer=embed">
+                                #segurança
+                            </a> 
+                            <a title="familia" target="_blank" href="https://www.tiktok.com/tag/familia?refer=embed">
+                                #familia
+                            </a> 
+                            <a target="_blank" title="♬ som original  - HBCARD" href="https://www.tiktok.com/music/som-original-HBCARD-7312920893031467782?refer=embed">
+                                ♬ som original  - HBCARD</a> 
+                            </section> 
 
+                            </blockquote>
                 </div>
             </div>
 
 
 
+        </section>
+
+        <section class="section-auxilio">
+            <div class="auxilio-card">
+                <div class="auxilio-card-header">
+                    <div class="icon-container">
+                        <span class="material-symbols-outlined">
+                            skull
+                        </span>
+                    </div>
+
+                    <div class="auxilio-card-label">
+                        Seguro De Vida
+                    </div>
+                </div>
+                    <div class="auxilio-card-text">
+                        R$ 10.000,00 em Seguro de Vida por morte acidental
+                    </div>
+            </div>
+
+            <div class="auxilio-card">
+                <div class="auxilio-card-header">
+                    <div class="icon-container">
+                        <span class="material-symbols-outlined">
+                            skull
+                        </span>
+                    </div>
+
+                    <div class="auxilio-card-label">
+                        Seguro De Vida
+                    </div>
+                </div>
+                    <div class="auxilio-card-text">
+                        R$ 10.000,00 em Seguro de Vida por morte acidental
+                    </div>
+            </div>
+
+            <div class="auxilio-card">
+                <div class="auxilio-card-header">
+                    <div class="icon-container">
+                        <span class="material-symbols-outlined">
+                            skull
+                        </span>
+                    </div>
+
+                    <div class="auxilio-card-label">
+                        Seguro De Vida
+                    </div>
+                </div>
+                    <div class="auxilio-card-text">
+                        R$ 10.000,00 em Seguro de Vida por morte acidental
+                    </div>
+            </div>
         </section>
 
         <section class="faq-section">
@@ -476,6 +547,7 @@ export default {
         justify-content: center;
         align-items: center;
         margin-top: 60px;
+        margin-bottom: 200px;
 
     
     }
@@ -520,7 +592,7 @@ export default {
     .produto-info{
         display: flex;
         width: 73%;
-        justify-content:flex-start;
+        justify-content:space-between;
     
     }
 
@@ -539,6 +611,15 @@ export default {
 
         position: relative;
         top: -40px;
+    }
+
+    .section-auxilio{
+        display: flex;
+        margin: 60px;
+        background-color: #082777;
+        box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        
     }
 
     .faq-section{
@@ -642,6 +723,12 @@ export default {
 
         .produto-info{
             justify-content: center;
+            flex-direction: column;
+            margin-bottom: 140px;
+        }
+
+        .produto-video-container{
+            margin-top: 30px;
         }
 
         .produto-title{

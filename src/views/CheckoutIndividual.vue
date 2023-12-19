@@ -2,20 +2,18 @@
     <div class="main-container">
         <div class="header">  <p class="label">Cadastro</p><p class="wrapper">></p> <p class="label">Pagamento</p>
         </div>
-        <CheckoutFormContainer
-        ref="formContainer"
-        @formulario-enviado="lidarComFormularioEnviado"/>
-        <div class="button-container">
-            <SigninButton
-            @click="coletarDadosDoFormulario"/>
-        </div>
-        
+        <CheckoutFormContainer ref="formContainer"
+        :form="form"
+        @form-data-updated="atualizarFormulario($event)"/>
+        <SigninButton @click="enviarFormulario"
+        :class="{ 'loading': loading }"/>
     </div>
 </template>
 <script>
 
 import SigninButton from '@/components/SigninButton.vue';
 import CheckoutFormContainer from '@/components/CheckoutFormContainer.vue';
+import api from "@/services/api"
 
 export default {
     components:{
@@ -23,17 +21,132 @@ export default {
         SigninButton
     },
 
+    data() {
+        return {
+            form:{
+                nome: '',
+                email: '',
+                cpf: '',
+                dob: '',
+                phone: '',
+            },
+
+            value: 58.9,
+
+            loading: false,
+        }
+    },
+
     methods:{
 
-        lidarComFormularioEnviado(formData) {
-      // Trata os dados do formulário recebidos do componente filho
-      console.log('Dados do formulário recebidos no componente pai:', formData);
-      // Atualiza os dados do formulário na propriedade local
-      this.dadosDoFormularioColetados = formData;
+    async enviarFormulario() {
+
+        for (const key in this.form) {
+        if (this.form[key] === '') {
+        window.alert(`Informe seu ${key}`)
+        } else {
+                try {
+                this.coletarDadosDoFormulario();
+                setTimeout(() => {
+                    this.gerarCobranca();
+                }, 15000);
+
+                setTimeout(() => {
+                    this.redirectPagamento();
+                }, 30000);
+            } catch (error) {
+                console.error(error);
+            } 
+        }
+        }
+
+       
     },
-        coletarDadosDoFormulario() {
-            this.$refs.formContainer.submitForm();
-        },
+
+    coletarDadosDoFormulario() {
+
+    console.log(this.forms)
+
+    const dadosUsuario = {
+        cpf: this.form.cpf,
+        nome: this.form.nome,
+        email: this.form.email,
+        telefone: this.form.phone,
+        dataNascimento: this.form.dob,
+        // value: 58.9
+    };
+
+    this.adicionarUsuario(dadosUsuario)
+
+    },
+
+    async gerarCobranca(){
+        try {
+
+            const body = {
+                cpf: this.form.cpf,
+                value: this.value
+            }
+
+            const response = api.post('/gerar-cobranca', body)
+            console.log('cobrança criada com sucesso:', response.data)
+            this.redirectPagamento()
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    async redirectPagamento() {
+    try {
+        const cpf = this.form.cpf;
+        console.log(cpf)
+        const response = await api.get(`/retornar-link-de-cobranca?cpf=${cpf}`);
+        const link = response.data.data
+        console.log(link); // Verifique se os dados estão dentro de response.data
+        window.location.href = link; // Se deseja redirecionar após receber o link
+    } catch (error) {
+        console.log(error);
+    }
+    },
+
+    async adicionarUsuario(dadosUsuario) {
+        try {
+        // Faz a requisição POST para adicionar o usuário
+        const response = await api.post('/adicionar-usuario', dadosUsuario);
+        
+        // Trate a resposta conforme necessário
+        console.log('Usuário adicionado com sucesso:', response.data);
+        
+        // Redirecione ou faça outras ações conforme necessário
+        } catch (error) {
+        console.error('Erro ao adicionar usuário:', error.message);
+        // Lide com o erro conforme necessário
+        }
+    },
+
+    atualizarFormulario(newFormData) {
+        this.form = newFormData
+    },
+
+    async listarUsuarios() {
+        try {
+            const {data} = await api.get('/listar-usuarios')
+            console.log(data)
+        } catch (error) {
+            console.error(error)
+        }
+    // try {
+    //   console.log('oi');
+    //   const {data} = await axios.get('http://localhost:3000/listar-usuarios');
+    //   console.log('Lista de usuários:', data);
+    // } catch (error) {
+    //   console.error('Erro ao listar usuários:', error.message);
+    // }
+  },
+  },
+    mounted() {
+        this.listarUsuarios();
+        console.log(this.form.cpf)
     }
 }
 </script>

@@ -3,7 +3,7 @@
     <div class="form-container">
       <div class="input-container">
         <label class="label" for="name">Nome:</label>
-        <input class="input" type="text" id="name" v-model="formData.name" />
+        <input class="input" type="text" id="name" v-model="formData.nome" />
       </div>
 
       <div class="input-container">
@@ -33,16 +33,24 @@
 
 <script>
 export default {
+
+  props:{
+    form: Object,
+  },
   data() {
     return {
-      formData: {
-        name: '',
-        email: '',
-        cpf: '',
-        dob: '',
-        phone: '',
+      formData: {...this.form}
+    }
+  },
+
+  watch: {
+    formData: {
+      handler(newFormData) {
+        // Emitir um evento para notificar o componente pai sobre as alterações
+        this.$emit("form-data-updated", newFormData);
       },
-    };
+      deep: true, // Observar alterações profundas dentro de formData
+    },
   },
 
   methods: {
@@ -71,6 +79,7 @@ export default {
   border-radius: 12px;
   background-color: #ffff;
   margin-bottom: 40px;
+  color:#082777;
 
 }
 
