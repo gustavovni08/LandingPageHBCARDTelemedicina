@@ -8,7 +8,7 @@ const porta = process.env.PORT || 8080;
 
 // Rota catch-all para servir o index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Iniciar o servidor
