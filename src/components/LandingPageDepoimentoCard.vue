@@ -96,9 +96,11 @@ export default {
         }
 
         .info-container{
-            width: 100%;
+     
             margin-top: 40px;
             margin-right: 0px;
+            height: auto;
+            width: auto;
         }
 
         .img-container{
@@ -107,8 +109,9 @@ export default {
 
         }
 
-        .text-container{
+        .text-container p{
             text-align: center;
+            height: auto;
         }
 
         .img-container img{
@@ -120,6 +123,7 @@ export default {
             justify-content: center;
             padding-left: 10%;
         }
+
 
         
     }

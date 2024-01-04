@@ -251,7 +251,10 @@ export default {
     }
 
     @media screen and (max-width:800px) {
-        
+        .card-container{
+            width: auto;
+           
+        }
     }
 
 
