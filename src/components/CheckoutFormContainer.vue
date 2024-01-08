@@ -71,15 +71,17 @@ export default {
 .form-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 375px;
   padding: 50px;
-  /* margin: auto; */
+  margin: auto;
   box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
   border: solid  rgba(0, 0, 0, 0.2) 0.6px;
   border-radius: 12px;
   background-color: #ffff;
   margin-bottom: 40px;
   color:#082777;
+  /* position: relative;
+  left: -52px; */
 
 }
 
@@ -126,9 +128,9 @@ export default {
 
   @media  screen and (max-width: 570px) {
     .form-container{
-      width: 70%;
+      width: 100%;
       position: relative;
-      left: -10px;
+      left: -52px;
     }
     
   }
