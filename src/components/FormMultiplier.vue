@@ -51,4 +51,10 @@ export default {
         border-radius: 12px;
         border: solid  rgba(0, 0, 0, 0.2) 0.6px;
     }
+
+    @media screen and (max-width: 800px) {
+        .card-container{
+            width: 70%;
+        }
+    }
 </style>

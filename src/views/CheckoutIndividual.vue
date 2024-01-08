@@ -186,4 +186,13 @@ export default {
     .button-container{
         height: 20vh;
     }
+
+    @media screen and (max-width:800px) {
+        .label{
+            font-size: 20px;
+        }   
+        .wrapper{
+            font-size: 20px;
+        }
+    }
 </style>

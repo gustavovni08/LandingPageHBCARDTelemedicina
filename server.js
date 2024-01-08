@@ -4,10 +4,10 @@ const path = require('path')
 
 const port = 8080
 
-app.use(express.static(__dirname))
-app.use(express.static(path.join(__dirname, '/js')))
-app.use(express.static(path.join(__dirname, '/css')))
-app.use(express.static(path.join(__dirname, '/img')))
+app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'dist/js')))
+app.use(express.static(path.join(__dirname, 'dist/css')))
+app.use(express.static(path.join(__dirname, 'dist/img')))
 
 app.get('/*', (req, res) =>{
     res.sendFile(path.join(__dirname, 'index.html'))

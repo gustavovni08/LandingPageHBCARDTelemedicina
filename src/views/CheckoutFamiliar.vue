@@ -215,4 +215,16 @@ export default {
         margin-left: 5px;
         margin-right: 5px;
     }
+
+
+
+    
+    @media screen and (max-width:800px) {
+        .label{
+            font-size: 20px;
+        }   
+        .wrapper{
+            font-size: 20px;
+        }
+    }
 </style>

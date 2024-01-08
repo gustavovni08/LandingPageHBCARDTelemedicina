@@ -709,7 +709,7 @@ export default {
     @media  screen and (max-width: 800px) {
 
         .header{
-            width: 100vw;
+            width: 124%;
             flex-direction: column;
             align-items: center;
         }
@@ -828,7 +828,7 @@ export default {
 
         .section-auxilio{
             flex-direction: column;
-            margin: 60px;
+            width: 80%;
             
         }
 
@@ -836,6 +836,10 @@ export default {
             width: auto;
             height: auto;
         }
+
+        .auxilio-card-text{
+        width: 200px;
+    }
         .faq-section{
             margin-top: 200px;
             margin-bottom: 0px;
