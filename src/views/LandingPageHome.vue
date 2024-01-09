@@ -82,8 +82,43 @@
                     </div>
                 </div>
 
-                <div class="produto-video-container">
-                    
+                <div class="produto-video-container video">
+                    <blockquote 
+                    class="tiktok-embed" 
+                    cite="https://www.tiktok.com/@hbcard/video/7321827099273219334" 
+                    data-video-id="7321827099273219334" 
+                    style="max-width: 505px;min-width: 225px;" > 
+                    <section> 
+                        <a target="_blank" 
+                        title="@hbcard" 
+                        href="https://www.tiktok.com/@hbcard?refer=embed">
+                            @hbcard
+                        </a> 
+                        
+                        <a title="cuidar" 
+                        target="_blank" 
+                        href="https://www.tiktok.com/tag/cuidar?refer=embed">
+                        #cuidar
+                        </a> 
+                        
+                        <a title="saude" 
+                        target="_blank" 
+                        href="https://www.tiktok.com/tag/saude?refer=embed">
+                        #saude
+                        </a> 
+                        
+                        <a title="telemedicina" 
+                        target="_blank" 
+                        href="https://www.tiktok.com/tag/telemedicina?refer=embed">
+                        #telemedicina
+                        </a> 
+                        <a target="_blank" 
+                        title="♬ som original  - HBCARD" 
+                        href="https://www.tiktok.com/music/som-original-HBCARD-7321827164377139974?refer=embed">
+                        ♬ som original  - HBCARD
+                        </a> 
+                    </section> 
+                    </blockquote>
                 </div>
             </div>
 
@@ -93,7 +128,7 @@
 
         <br>
 
-        <section class="section-produto">
+        <section class="section-produto tokio">
             <div class="produto-header">
                 <div class="produto-title">
                     <p>Economize com a <br> nossa parceria</p>
@@ -122,8 +157,10 @@
                     </div>
                 </div>
 
-                <div class="produto-video-container">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@hbcard/video/7312920835168242950" data-video-id="7312920835168242950" style="max-width: 505px;min-width: 225px;" > 
+                <div class="produto-video-container ">
+                    <blockquote class="tiktok-embed" 
+                    cite="https://www.tiktok.com/@hbcard/video/7312920835168242950" 
+                    data-video-id="7312920835168242950" style="max-width: 505px;min-width: 225px;" > 
                         <section> 
                             <a target="_blank" title="@hbcard" href="https://www.tiktok.com/@hbcard?refer=embed">
                                 @hbcard
@@ -364,7 +401,7 @@ export default {
             const screenWidth = window.innerWidth
 
             if (screenWidth < 800){
-                this.iframe.width = 340
+                this.iframe.width = 240
                 this.iframe.heigth = 360
             } else {
                 this.iframe.width = 854
@@ -558,7 +595,7 @@ export default {
         width: 100%;
         justify-content: center;
         align-items: center;
-        margin-top: 60px;
+        margin-top: 200px;
         margin-bottom: 200px;
 
     
@@ -566,7 +603,7 @@ export default {
 
     .produto-header{
         display: flex;
-        width: 85%;
+        width: 73%;
         justify-content: space-between;
     }
     .produto-title p{
@@ -709,7 +746,7 @@ export default {
     @media  screen and (max-width: 800px) {
 
         .header{
-            width: 124%;
+            width: 180%;
             flex-direction: column;
             align-items: center;
         }
@@ -721,7 +758,7 @@ export default {
         }
 
         .header-button-container{
-            margin-left: 20px;
+            margin-left: 40px;
             margin-bottom: 30px;
         }
         .main-container{
@@ -731,10 +768,12 @@ export default {
          .home-section{
             flex-direction: column;
             margin-top: 200px;
+            margin-bottom: 400px;
         }
 
         .home-button{
-            width: auto;
+            width: 73%;
+            margin-left: 2%;
         }
 
         .h1-container{
@@ -756,7 +795,7 @@ export default {
          
 
         .section-produto{
-            margin-top: 400px;
+            margin-top: 800px;
             align-items: center;
             margin-bottom: 400px;
         }
@@ -794,6 +833,7 @@ export default {
 
         .produto-video-container{
             margin-top: 30px;
+            margin-bottom: 300px;
         }
 
         .produto-title{
@@ -857,6 +897,8 @@ export default {
             flex-direction: column;
             margin-top: 400px;
         }
+
+
     } 
 
 
