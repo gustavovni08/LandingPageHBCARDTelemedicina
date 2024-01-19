@@ -354,7 +354,7 @@ export default {
                 },
                 {
                     label:'Como assinar?',
-                    text:'Acesse o site telemedicina.hbcard.com.br e assine 100% online'
+                    text:'Acesse o site hbcard.com.br e assine 100% online'
                 },
                 {
                     label:'Tem taxa de adesão?',

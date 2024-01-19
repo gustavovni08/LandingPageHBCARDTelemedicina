@@ -25,6 +25,7 @@
         <label class="label" for="phone">Telefone:</label>
         <input class="input" type="tel" id="phone" v-model="formData.phone" />
       </div>
+
     </div>
 
     <!-- <div class="button" @click="submitForm">Enviar</div> -->
@@ -128,9 +129,9 @@ export default {
 
   @media  screen and (max-width: 570px) {
     .form-container{
-      width: 100%;
+      width: 60%;
       position: relative;
-      left: -52px;
+      left: -7px;
     }
     
   }
