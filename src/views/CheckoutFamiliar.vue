@@ -12,6 +12,7 @@
         <SigninButton @click="enviarFormulario"/>
     </div>
 </template>
+
 <script>
 
 import SigninButton from '@/components/SigninButton.vue';
@@ -46,15 +47,20 @@ export default {
             
             ],
 
-            value: 58.9,
+            value: 117.8,
 
             FormMultiplier: 2,
+
+            okToSubmit: false,
         }
     },
 
     methods:{
 
     enviarFormulario(){
+        
+        window.alert('Seus dados estão sendo processados aguarde um instante!')
+        
         try {
             this.coletarDadosDoFormulario();
             setTimeout(() => {
@@ -66,6 +72,7 @@ export default {
             }, 40000)
 
             } catch (error) {
+                window.alert('Ocorreu um erro, tente novamente em alguns instantes')
                 console.error(error)
             } 
     },
@@ -73,9 +80,10 @@ export default {
     coletarDadosDoFormulario() {
 
         console.log(this.forms)
+        const anoAtual = new Date().getFullYear()
 
         for (let form of this.forms) {
-        // Verificar se algum campo está vazio
+        
         if (
             form.nome === '' ||
             form.email === '' ||
@@ -83,19 +91,33 @@ export default {
             form.dob === '' ||
             form.phone === ''
         ) {
-            window.alert('Preencha todos os campos antes de enviar.');
-            return; // Impede a inserção caso haja campos vazios
+            window.alert('Preencha todos os campos antes de enviar.')
+            return
         }
 
-        const dadosUsuario = {
-            cpf: form.cpf,
-            nome: form.nome,
-            email: form.email,
-            telefone: form.phone,
-            dataNascimento: form.dob,
-        };
+        const idade = parseInt(form.dob.substring(0, 4), 10)
 
-        this.adicionarUsuario(dadosUsuario)
+        if((anoAtual - idade) < 14){
+            window.alert(`${form.nome} é Menor de 14 anos`)
+            return
+        }
+
+        this.okToSubmit = true
+
+        }
+
+        if(this.okToSubmit === true){
+            for (let form of this.forms){
+                const dadosUsuario = {
+                    cpf: form.cpf,
+                    nome: form.nome,
+                    email: form.email,
+                    telefone: form.phone,
+                    dataNascimento: form.dob,
+                }
+
+                this.adicionarUsuario(dadosUsuario)
+            }
         }
     
     },
@@ -128,7 +150,7 @@ export default {
         try {
         const cpf = this.forms[0].cpf;
         console.log(cpf)
-        const response = await api.get(`/retornar-link-de-cobranca?cpf=${cpf}`);
+        const response = await api.get(`/retornar-link-de-cobranca?cpf=${cpf}`)
         const link = response.data.data
         console.log(link); // Verifique se os dados estão dentro de response.data
         window.location.href = link; // Se deseja redirecionar após receber o link
@@ -136,36 +158,18 @@ export default {
         console.log(error);
     }
 
-    // Construir o URL de redirecionamento com base no multiplier
-    //   const baseUrl = 'https://sandbox.asaas.com/c/';
-    //   const multiplier = this.FormMultiplier;
-    //   const urlMappings = {
-    //     2: 'd4ki2d2dceh0w4ds',
-    //     3: 'ek4w7as99stn7484',
-    //     4: 'uhz7npl1rllrg33b',
-    //     5: 'qptm6y348xayostz',
-    //   };
-
-
-    //   const code = urlMappings[multiplier];
-
-
-    //   window.location.href = `${baseUrl}${code}`;
-
     },
 
     async adicionarUsuario(dadosUsuario) {
       try {
-        // Faz a requisição POST para adicionar o usuário
+        
         const response = await api.post('/adicionar-usuario', dadosUsuario);
 
-        // Trate a resposta conforme necessário
         console.log('Usuário adicionado com sucesso:', response.data);
 
-        // Redirecione ou faça outras ações conforme necessário
       } catch (error) {
         console.error('Erro ao adicionar usuário:', error.message);
-        // Lide com o erro conforme necessário
+       
       }
     },
 
@@ -175,10 +179,9 @@ export default {
     },
 
     handleMultiplierChange(newMultiplier) {
-          // Lidar com o novo valor do multiplicador
           console.log("Novo valor do multiplicador:", newMultiplier);
-          // Atualizar o valor no componente pai
           this.FormMultiplier = newMultiplier;
+          this.value = 58.9 * this.FormMultiplier
 
           this.forms = Array.from({ length: newMultiplier }, () => ({
               nome: "",
@@ -191,6 +194,7 @@ export default {
     }
 }
 </script>
+
 <style scoped>
     .main-container{
         display: flex;

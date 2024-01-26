@@ -31,7 +31,7 @@ export default {
                 phone: '',
             },
 
-            value: 59.8,
+            value: 79.8,
 
             loading: false,
 
@@ -48,11 +48,20 @@ export default {
         window.alert(`Informe seu ${key}`)
         return
         } else {
-            this.okToSubmit = true
+            const idade = parseInt(this.form.dob.substring(0, 4), 10)
+            const anoAtual = new Date().getFullYear();
+            if((anoAtual - idade) < 14){
+                window.alert('Menor de 14 anos')
+                return
+            }else{
+                this.okToSubmit = true
+            }
+            
         }
         }
 
         if(this.okToSubmit===true){
+            window.alert('Seus dados estão sendo processados aguarde um instante!')
             try {
                 this.coletarDadosDoFormulario();
                 setTimeout(() => {
@@ -63,6 +72,7 @@ export default {
                     this.redirectPagamento();
                 }, 30000);
             } catch (error) {
+                window.alert('Ocorreu um erro, tente novamente em alguns instantes')
                 console.error(error);
             } 
         }
