@@ -4,19 +4,19 @@ const path = require('path')
 
 const port = 3000
 
-const allowedIPs = ['191.101.78.53']
+// const allowedIPs = ['191.101.78.53']
 
-app.use((req, res, next) => {
-    const clientIP = req.ip || req.connection.remoteAddress;
+// app.use((req, res, next) => {
+//     const clientIP = req.ip || req.connection.remoteAddress;
     
-    if (allowedIPs.includes(clientIP)) {
-      // IP permitido, continue com o próximo middleware
-      next();
-    } else {
-      // IP não permitido, envie uma resposta proibida
-      res.status(403).send('Acesso proibido');
-    }
-  });
+//     if (allowedIPs.includes(clientIP)) {
+//       // IP permitido, continue com o próximo middleware
+//       next();
+//     } else {
+//       // IP não permitido, envie uma resposta proibida
+//       res.status(403).send('Acesso proibido');
+//     }
+//   });
 
 app.use(express.static(__dirname))
 app.use(express.static(path.join(__dirname, '/js')))
