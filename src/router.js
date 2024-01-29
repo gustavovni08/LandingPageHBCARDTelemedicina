@@ -7,6 +7,7 @@ import CheckoutFamiliar from './views/CheckoutFamiliar.vue'
 
 const routes = [
     {path: '/', component: LandingPageHome},
+    {path: '/linkzv1', component: LandingPageHome},
     {path: '/PlanoIndividual', component: CheckoutIndividual},
     {path: '/PlanoFamiliar', component: CheckoutFamiliar},
 
