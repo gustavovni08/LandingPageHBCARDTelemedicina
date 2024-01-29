@@ -25,6 +25,7 @@
         <label class="label" for="phone">Telefone:</label>
         <input class="input" type="tel" id="phone" v-model="formData.phone" />
       </div>
+
     </div>
 
     <!-- <div class="button" @click="submitForm">Enviar</div> -->
@@ -71,7 +72,7 @@ export default {
 .form-container {
   display: flex;
   flex-direction: column;
-  width: 450px;
+  width: 375px;
   padding: 50px;
   margin: auto;
   box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
@@ -80,6 +81,8 @@ export default {
   background-color: #ffff;
   margin-bottom: 40px;
   color:#082777;
+  /* position: relative;
+  left: -52px; */
 
 }
 
@@ -126,7 +129,9 @@ export default {
 
   @media  screen and (max-width: 570px) {
     .form-container{
-      width: 350px;
+      width: 60%;
+      position: relative;
+      left: -7px;
     }
     
   }

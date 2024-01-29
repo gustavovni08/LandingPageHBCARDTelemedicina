@@ -58,7 +58,7 @@
                             <span class="material-symbols-outlined">
                              emergency  
                             </span>
-                            <p>Parceria Hospital AlbertEinstein</p>
+                            <p>Parceria Hospital Albert Einstein</p>
                        </div>
                        <div class="list-item">
                             <span class="material-symbols-outlined">
@@ -82,8 +82,43 @@
                     </div>
                 </div>
 
-                <div class="produto-video-container">
-                    
+                <div class="produto-video-container video">
+                    <blockquote 
+                    class="tiktok-embed" 
+                    cite="https://www.tiktok.com/@hbcard/video/7321827099273219334" 
+                    data-video-id="7321827099273219334" 
+                    style="max-width: 505px;min-width: 225px;" > 
+                    <section> 
+                        <a target="_blank" 
+                        title="@hbcard" 
+                        href="https://www.tiktok.com/@hbcard?refer=embed">
+                            @hbcard
+                        </a> 
+                        
+                        <a title="cuidar" 
+                        target="_blank" 
+                        href="https://www.tiktok.com/tag/cuidar?refer=embed">
+                        #cuidar
+                        </a> 
+                        
+                        <a title="saude" 
+                        target="_blank" 
+                        href="https://www.tiktok.com/tag/saude?refer=embed">
+                        #saude
+                        </a> 
+                        
+                        <a title="telemedicina" 
+                        target="_blank" 
+                        href="https://www.tiktok.com/tag/telemedicina?refer=embed">
+                        #telemedicina
+                        </a> 
+                        <a target="_blank" 
+                        title="♬ som original  - HBCARD" 
+                        href="https://www.tiktok.com/music/som-original-HBCARD-7321827164377139974?refer=embed">
+                        ♬ som original  - HBCARD
+                        </a> 
+                    </section> 
+                    </blockquote>
                 </div>
             </div>
 
@@ -93,10 +128,10 @@
 
         <br>
 
-        <section class="section-produto">
+        <section class="section-produto tokio">
             <div class="produto-header">
                 <div class="produto-title">
-                    <p>Economize com a <br> nossa paceria</p>
+                    <p>Economize com a <br> nossa parceria</p>
                 </div>
 
                 <div class="produto-logo">
@@ -107,9 +142,9 @@
                 <div class="produto-itens-container">
                     <div class="info-container">
                 <div class="h1-container">
-                    <p class="h2-text">HACARD em parceria com a <br>
+                    <p class="h2-text">HBCARD em parceria com a <br>
                         Tokio Marine Seguradora oferece a <br>
-                        telemadicina do Einstein com</p>
+                        telemedicina do Einstein com</p>
                     <h1 class="h1-price h1-price-produto">70%OFF</h1>
                 </div>
 
@@ -122,8 +157,10 @@
                     </div>
                 </div>
 
-                <div class="produto-video-container">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@hbcard/video/7312920835168242950" data-video-id="7312920835168242950" style="max-width: 505px;min-width: 225px;" > 
+                <div class="produto-video-container ">
+                    <blockquote class="tiktok-embed" 
+                    cite="https://www.tiktok.com/@hbcard/video/7312920835168242950" 
+                    data-video-id="7312920835168242950" style="max-width: 505px;min-width: 225px;" > 
                         <section> 
                             <a target="_blank" title="@hbcard" href="https://www.tiktok.com/@hbcard?refer=embed">
                                 @hbcard
@@ -149,7 +186,11 @@
 
         </section>
 
+        <h1 class="faq-title">Também cuidamos da sua família</h1>
+
+
         <section class="section-auxilio">
+           
             <div class="auxilio-card">
                 <div class="auxilio-card-header">
                     <div class="icon-container">
@@ -171,16 +212,16 @@
                 <div class="auxilio-card-header">
                     <div class="icon-container">
                         <span class="material-symbols-outlined">
-                            skull
+                            grade
                         </span>
                     </div>
 
                     <div class="auxilio-card-label">
-                        Seguro De Vida
+                        Sorteio Mensal
                     </div>
                 </div>
                     <div class="auxilio-card-text">
-                        R$ 10.000,00 em Seguro de Vida por morte acidental
+                        Titulo de Capitalização no valor de R$ 5.000,00
                     </div>
             </div>
 
@@ -188,24 +229,32 @@
                 <div class="auxilio-card-header">
                     <div class="icon-container">
                         <span class="material-symbols-outlined">
-                            skull
+                            add
                         </span>
                     </div>
 
                     <div class="auxilio-card-label">
-                        Seguro De Vida
+                        Auxilio Funeral
                     </div>
                 </div>
                     <div class="auxilio-card-text">
-                        R$ 10.000,00 em Seguro de Vida por morte acidental
+                        Auxilio Funeral no valor de  R$ 3.500,00
                     </div>
             </div>
         </section>
 
+        <div class="header-button-container">
+                <div class="button header-button"
+                @click="irParaPrecos"
+                >
+                Assine já
+            </div>
+        </div>
+
         <section class="faq-section">
 
             <div class="faq-header">
-                <h1 class="faq-title"> Duvidas Frequentes</h1>
+                <h1 class="faq-title"> Dúvidas Frequentes</h1>
             </div>
             <div class="faq-container"
             v-for="(item, index) in faq" :key="index">
@@ -305,7 +354,7 @@ export default {
                 },
                 {
                     label:'Como assinar?',
-                    text:'Acesse o site telemedicina.hbcard.com.br E assine 100% online'
+                    text:'Acesse o site hbcard.com.br e assine 100% online'
                 },
                 {
                     label:'Tem taxa de adesão?',
@@ -313,7 +362,7 @@ export default {
                 },
                 {
                     label:'Quando começar a usar?',
-                    text:'Adesões realizadas entre dia 1 e dia 25 de cada mês a vigência se dá apartar do dia 10 de mês subsequente com consultas ilimitadas com consultas Einstein de domingo a domingo.'
+                    text:'Adesões realizadas entre dia 1 e dia 25 de cada mês, a vigência inicia apartir do dia 10 do mês subsequente.'
                 },
             ],
 
@@ -321,7 +370,7 @@ export default {
                 {
                     img:'yuki.png',
                     nome:'Yuki Toma Giraud, Buenos Aires',
-                    text:'Meu nome é Yuki Toma Giraud, tive uma experiência muito positiva com o HBCARD, usando a Telemedicina. Após peregrinar por algumas consultas presenciais que não surgiu nenhum efeito, usei à telemedicina pois estava em Buenos Aires e, o médico solicitou um exame basico(fezes), fiz, mandei p ele no mesmo e-mail e, ele me receitou um remédio, resolvendo um problema que já vinha há mais de 3 meses, onde todos os outros médicos dizia que era virose.',
+                    text:'Meu nome é Yuki Toma Giraud, tive uma experiência muito positiva com o HBCARD, usando a Telemedicina. Após peregrinar por algumas consultas presenciais que não surgiu nenhum efeito, usei à telemedicina pois estava em Buenos Aires e, o médico solicitou um exame basico(fezes), fiz, mandei p ele no mesmo e-mail e, ele me receitou um remédio, resolvendo um problema que já vinha há mais de 3 meses, onde todos os outros médicos diziam que era virose.',
                 },
                 {
                     img:'zenilson.png',
@@ -352,7 +401,7 @@ export default {
             const screenWidth = window.innerWidth
 
             if (screenWidth < 800){
-                this.iframe.width = 640
+                this.iframe.width = 240
                 this.iframe.heigth = 360
             } else {
                 this.iframe.width = 854
@@ -546,7 +595,7 @@ export default {
         width: 100%;
         justify-content: center;
         align-items: center;
-        margin-top: 60px;
+        margin-top: 200px;
         margin-bottom: 200px;
 
     
@@ -554,7 +603,7 @@ export default {
 
     .produto-header{
         display: flex;
-        width: 73.77%;
+        width: 73%;
         justify-content: space-between;
     }
     .produto-title p{
@@ -622,6 +671,32 @@ export default {
         
     }
 
+    .auxilio-card{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        color: #fff;
+        height: 250px;
+        width: 300px;
+        margin: 30px;
+    }
+
+    .auxilio-card span{
+        font-size: 64px;
+    }
+
+    .auxilio-card-label{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+    }
+
+    .auxilio-card-text{
+        width: 250px;
+    }
+
     .faq-section{
         display: flex;
         flex-direction: column;
@@ -669,9 +744,36 @@ export default {
 
 
     @media  screen and (max-width: 800px) {
-        .home-section{
+
+        .header{
+            width: 180%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-logo-container{
+            margin: 0;
+            padding: 0;
+            margin-top: 40px;
+        }
+
+        .header-button-container{
+            margin-left: 40px;
+            margin-bottom: 30px;
+        }
+        .main-container{
+            width: 100%;
+
+        }
+         .home-section{
             flex-direction: column;
             margin-top: 200px;
+            margin-bottom: 400px;
+        }
+
+        .home-button{
+            width: 73%;
+            margin-left: 2%;
         }
 
         .h1-container{
@@ -685,14 +787,17 @@ export default {
         .img-container img{
         position: inline;
         top: 47px;
-/* 
-        /* max-width: 50vw; */
-        max-width: 80%;
-        }
+
+         max-width: 50vw; 
+         max-width: 80%; 
+         margin-bottom: 60px;
+         }
+         
 
         .section-produto{
-            margin-top: 400px;
+            margin-top: 800px;
             align-items: center;
+            margin-bottom: 400px;
         }
         .produto-header{
             flex-direction: column;
@@ -703,10 +808,9 @@ export default {
 
         .produto-header p{
             text-align: center;
-            width: 100%;
             /* margin-left: 20%; */
             font-size: 50px;
-        }
+        } 
 
         .produto-logo{
             width: 80%;
@@ -729,6 +833,7 @@ export default {
 
         .produto-video-container{
             margin-top: 30px;
+            margin-bottom: 300px;
         }
 
         .produto-title{
@@ -761,6 +866,20 @@ export default {
             
         }
 
+        .section-auxilio{
+            flex-direction: column;
+            width: 80%;
+            
+        }
+
+        .auxilio-card{
+            width: auto;
+            height: auto;
+        }
+
+        .auxilio-card-text{
+        width: 200px;
+    }
         .faq-section{
             margin-top: 200px;
             margin-bottom: 0px;
@@ -778,7 +897,9 @@ export default {
             flex-direction: column;
             margin-top: 400px;
         }
-    }
+
+
+    } 
 
 
 </style>

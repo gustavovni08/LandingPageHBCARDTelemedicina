@@ -108,8 +108,15 @@ export default {
                 value: this.value * this.FormMultiplier
             }
 
-            const response = api.post('/gerar-cobranca', body)
-            console.log('cobrança criada com sucesso:', response.data)
+            const assinatura = await api.post('/gerar-assinatura', body)
+            console.log('assinatua gerada com sucesso', assinatura.data)
+
+            setTimeout(async () => {
+                const response = await api.post('/gerar-cobranca', body)
+            console.log('cobrança criada com sucesso:', response.data)    
+            }, 10000)
+            
+
             this.redirectPagamento()
         } catch (error) {
             console.error(error)
@@ -214,5 +221,17 @@ export default {
     .wrapper{
         margin-left: 5px;
         margin-right: 5px;
+    }
+
+
+
+    
+    @media screen and (max-width:800px) {
+        .label{
+            font-size: 20px;
+        }   
+        .wrapper{
+            font-size: 20px;
+        }
     }
 </style>

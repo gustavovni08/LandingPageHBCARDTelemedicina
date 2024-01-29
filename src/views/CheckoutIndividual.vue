@@ -31,9 +31,11 @@ export default {
                 phone: '',
             },
 
-            value: 58.9,
+            value: 59.8,
 
             loading: false,
+
+            okToSubmit: false
         }
     },
 
@@ -44,8 +46,14 @@ export default {
         for (const key in this.form) {
         if (this.form[key] === '') {
         window.alert(`Informe seu ${key}`)
+        return
         } else {
-                try {
+            this.okToSubmit = true
+        }
+        }
+
+        if(this.okToSubmit===true){
+            try {
                 this.coletarDadosDoFormulario();
                 setTimeout(() => {
                     this.gerarCobranca();
@@ -57,7 +65,6 @@ export default {
             } catch (error) {
                 console.error(error);
             } 
-        }
         }
 
        
@@ -88,9 +95,16 @@ export default {
                 value: this.value
             }
 
-            const response = api.post('/gerar-cobranca', body)
-            console.log('cobrança criada com sucesso:', response.data)
-            this.redirectPagamento()
+            const assinatura = await api.post('/gerar-assinatura', body)
+            console.log('assinatua gerada com sucesso', assinatura.data)
+
+            setTimeout( async ()=>{
+                const response = await api.post('/gerar-cobranca', body)
+                console.log('cobrança criada com sucesso:', response.data)
+                this.redirectPagamento()
+            }, 10000)
+
+            
         } catch (error) {
             console.error(error)
         }
@@ -135,13 +149,7 @@ export default {
         } catch (error) {
             console.error(error)
         }
-    // try {
-    //   console.log('oi');
-    //   const {data} = await axios.get('http://localhost:3000/listar-usuarios');
-    //   console.log('Lista de usuários:', data);
-    // } catch (error) {
-    //   console.error('Erro ao listar usuários:', error.message);
-    // }
+
   },
   },
     mounted() {
@@ -185,5 +193,14 @@ export default {
 
     .button-container{
         height: 20vh;
+    }
+
+    @media screen and (max-width:800px) {
+        .label{
+            font-size: 20px;
+        }   
+        .wrapper{
+            font-size: 20px;
+        }
     }
 </style>

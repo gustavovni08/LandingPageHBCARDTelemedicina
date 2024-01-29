@@ -1,10 +1,12 @@
 <template>
-
-        <div class="button" @click="setLoading"
-        :class="{ 'loading': loading }"
-        :disable="loading">
-        {{ loading ? 'Carregando...' : 'Enviar' }}
+        <div class="button-container">
+            <div class="button" @click="setLoading"
+            :class="{ 'loading': loading }"
+            :disable="loading">
+            {{ loading ? 'Carregando...' : 'Enviar' }}
+            </div>
         </div>
+        
 
 </template>
 <script>
@@ -31,6 +33,12 @@ export default {
 }
 </script>
 <style scoped>
+
+    .button-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .button{
         display: flex;
         align-items: center;
@@ -45,8 +53,8 @@ export default {
         cursor: pointer;
 
         width: 400px;
-        height: 50px;
-        margin: auto;
+        height: 50px; 
+        /* margin: auto; */
 
 
     }
@@ -58,5 +66,13 @@ export default {
     .loading {
         background-color: #feca62;
         cursor: not-allowed; 
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .button-container{
+            width: 80%;
+        }
+        
     }
 </style>
