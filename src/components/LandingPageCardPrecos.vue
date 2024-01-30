@@ -78,15 +78,17 @@ export default {
         users:Number,
         title:String,
         einsteinPrice:Number,
+        push:String,
     },
 
     methods:{
         navegar(){
-            if (this.title === 'Individual') {
-            this.$router.push('/PlanoIndividual');
-            } else {
-                this.$router.push('/PlanoFamiliar')
-            }
+            this.$router.push(`/Plano${this.push}`)
+            // if (this.title === 'Individual') {
+            // this.$router.push('/PlanoIndividual');
+            // } else {
+            //     this.$router.push('/PlanoFamiliar')
+            // }
         }
     }
 }

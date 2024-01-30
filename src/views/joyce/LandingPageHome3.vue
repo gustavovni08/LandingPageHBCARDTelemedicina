@@ -327,21 +327,15 @@ export default {
                     title: 'Familiar',
                     price: 29.90,
                     users: 2,
-                    push: 'Familiar1',
+                    push: 'Familiar3',
                 },
                 {
                     einsteinPrice: 129.90,
                     title: 'Individual',
                     price: 39.90,
                     users: 0,
-                    push: 'Individual1',
+                    push: 'Individual3',
                 },
-                // {
-                //     einsteinPrice: 0,
-                //     title: 'Empresarial',
-                //     price: 19.90,
-                //     users: 10,
-                // },
             ],
 
             isFixed: false,
