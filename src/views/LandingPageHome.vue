@@ -305,6 +305,7 @@
                 :users="plano.users"
                 :einsteinPrice="plano.einsteinPrice"
                 :price="plano.price"
+                :push="plano.push"
                 />
             </div>
         </section>
@@ -326,12 +327,14 @@ export default {
                     title: 'Familiar',
                     price: 29.90,
                     users: 2,
+                    push:'Familiar'
                 },
                 {
                     einsteinPrice: 129.90,
                     title: 'Individual',
                     price: 39.90,
                     users: 0,
+                    push:'Individual'
                 },
                 // {
                 //     einsteinPrice: 0,
