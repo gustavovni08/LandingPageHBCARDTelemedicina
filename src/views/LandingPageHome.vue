@@ -19,7 +19,7 @@
             <div class="info-container">
                 <div class="h1-container">
                     <p class="h1-text">Sua saúde <br>protegida por</p>
-                    <h1 class="h1-price">R$ 29,90</h1>
+                    <h1 class="h1-price">R$ 40,00</h1>
                 </div>
                
                 <div class="button home-button"
@@ -323,16 +323,16 @@ export default {
         return{
             planos:[
                 {
-                    einsteinPrice: 99.90,
+                    einsteinPrice: 100,
                     title: 'Familiar',
-                    price: 29.90,
+                    price: 40.0,
                     users: 2,
                     push:'Familiar'
                 },
                 {
-                    einsteinPrice: 129.90,
+                    einsteinPrice: 130,
                     title: 'Individual',
-                    price: 39.90,
+                    price: 50.0,
                     users: 0,
                     push:'Individual'
                 },

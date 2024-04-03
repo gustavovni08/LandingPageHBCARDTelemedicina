@@ -47,7 +47,7 @@ export default {
             
             ],
 
-            value: 117.8,
+            value: 160,
 
             FormMultiplier: 2,
 
