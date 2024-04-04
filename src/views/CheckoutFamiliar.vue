@@ -47,7 +47,7 @@ export default {
             
             ],
 
-            value: 160,
+            value:59.8,
 
             FormMultiplier: 2,
 
@@ -200,6 +200,10 @@ export default {
         if(vendor_code){
             this.vendor_code = vendor_code
             console.log(this.vendor_code)
+            
+            if(this.vendor_code === 'vivianePT'){
+                this.price = 80 
+            }
         } else {
             console.log('não há código de vendedor')
         }
