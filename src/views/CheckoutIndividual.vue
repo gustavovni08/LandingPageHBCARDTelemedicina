@@ -31,7 +31,7 @@ export default {
                 phone: '',
             },
 
-            value: 79.8,
+            value: 100,
 
             loading: false,
 
