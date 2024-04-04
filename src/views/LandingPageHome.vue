@@ -19,7 +19,7 @@
             <div class="info-container">
                 <div class="h1-container">
                     <p class="h1-text">Sua saúde <br>protegida por</p>
-                    <h1 class="h1-price">R$ 40,00</h1>
+                    <h1 class="h1-price">R$ {{ planos[0].price.toFixed(2).replace('.', ',') }}</h1>
                 </div>
                
                 <div class="button home-button"
@@ -323,16 +323,16 @@ export default {
         return{
             planos:[
                 {
-                    einsteinPrice: 100,
+                    einsteinPrice: 99.90,
                     title: 'Familiar',
-                    price: 40.0,
+                    price: 29.90,
                     users: 2,
                     push:'Familiar'
                 },
                 {
-                    einsteinPrice: 130,
+                    einsteinPrice: 129.90,
                     title: 'Individual',
-                    price: 50.0,
+                    price: 39.9,
                     users: 0,
                     push:'Individual'
                 },
@@ -387,6 +387,8 @@ export default {
                 heigth:480,
             },
 
+            vendor_code:''
+
         }
     },
 
@@ -417,6 +419,15 @@ export default {
             if(this.$route.params.vendor_code){
                 const vendor_code = this.$route.params.vendor_code
                 localStorage.setItem('vendor_code', vendor_code)
+                this.vendor_code = vendor_code
+
+                if(this.vendor_code === 'vivianePT'){
+                    this.planos[0].price = 40
+                    this.planos[1].price = 50
+
+                    this.planos[0].einsteinPrice = 100
+                    this.planos[1].einsteinPrice = 130
+                }
             }else{
                 console.log('não há codigo de vendedor')
             }
