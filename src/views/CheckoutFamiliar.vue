@@ -52,6 +52,8 @@ export default {
             FormMultiplier: 2,
 
             okToSubmit: false,
+
+            vendor_code: '',
         }
     },
 
@@ -127,7 +129,8 @@ export default {
 
             const body = {
                 cpf: this.forms[0].cpf,
-                value: this.value * this.FormMultiplier
+                value: this.value * this.FormMultiplier,
+                vendor_code: this.vendor_code
             }
 
             const assinatura = await api.post('/gerar-assinatura', body)
@@ -191,6 +194,17 @@ export default {
               phone: "",
             }));
     },
+
+    getCodigoVendedor(){
+        const vendor_code = localStorage.getItem('vendor_code')
+        if(vendor_code){
+            this.vendor_code = vendor_code
+            console.log(this.vendor_code)
+        } else {
+            console.log('não há código de vendedor')
+        }
+
+    }
     }
 }
 </script>

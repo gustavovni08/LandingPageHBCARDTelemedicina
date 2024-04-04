@@ -385,7 +385,8 @@ export default {
             iframe:{
                 width:854,
                 heigth:480,
-            }
+            },
+
         }
     },
 
@@ -410,6 +411,15 @@ export default {
                 this.iframe.width = 854
                 this.iframe.heigth = 480
             }
+        },
+
+        verificarCodigoVendedor(){
+            if(this.$route.params.vendor_code){
+                const vendor_code = this.$route.params.vendor_code
+                localStorage.setItem('vendor_code', vendor_code)
+            }else{
+                console.log('não há codigo de vendedor')
+            }
         }
     },
 
@@ -418,6 +428,7 @@ export default {
     window.addEventListener("resize", this.updateDimensions)
 
     this.updateDimensions()
+    this.verificarCodigoVendedor()
     },
 
 

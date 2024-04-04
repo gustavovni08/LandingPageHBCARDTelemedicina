@@ -35,7 +35,9 @@ export default {
 
             loading: false,
 
-            okToSubmit: false
+            okToSubmit: false,
+
+            vendor_code:''
         }
     },
 
@@ -82,7 +84,7 @@ export default {
 
     coletarDadosDoFormulario() {
 
-    console.log(this.forms)
+    console.log(this.form)
 
     const dadosUsuario = {
         cpf: this.form.cpf,
@@ -102,7 +104,8 @@ export default {
 
             const body = {
                 cpf: this.form.cpf,
-                value: this.value
+                value: this.value,
+                vendor_code: this.vendor_code
             }
 
             const assinatura = await api.post('/gerar-assinatura', body)
@@ -111,6 +114,7 @@ export default {
             setTimeout( async ()=>{
                 const response = await api.post('/gerar-cobranca', body)
                 console.log('cobrança criada com sucesso:', response.data)
+                this.enviarEmail()
                 this.redirectPagamento()
             }, 10000)
 
@@ -160,10 +164,37 @@ export default {
             console.error(error)
         }
 
-  },
+    },
+
+    async enviarEmail(){
+        const body = {
+            nome: this.form.nome,
+            email: this.form.email
+        }
+
+        try {
+            const response = await api.post('/enviar-email-poscompra', body)
+            console.log(response)
+        } catch (error) {
+            console.error(error)
+        }
+    },
+    getCodigoVendedor(){
+        const vendor_code = localStorage.getItem('vendor_code')
+        if(vendor_code){
+            this.vendor_code = vendor_code
+            console.log(this.vendor_code)
+        } else {
+            console.log('não há código de vendedor')
+        }
+
+    }
+
+
   },
     mounted() {
-        this.listarUsuarios();
+        this.listarUsuarios()
+        this.getCodigoVendedor()
         console.log(this.form.cpf)
     }
 }
