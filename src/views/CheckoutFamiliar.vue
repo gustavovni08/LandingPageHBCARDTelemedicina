@@ -133,8 +133,8 @@ export default {
                 vendor_code: this.vendor_code
             }
 
-            const assinatura = await api.post('/gerar-assinatura', body)
-            console.log('assinatua gerada com sucesso', assinatura.data)
+            // const assinatura = await api.post('/gerar-assinatura', body)
+            // console.log('assinatua gerada com sucesso', assinatura.data)
 
             setTimeout(async () => {
                 const response = await api.post('/gerar-cobranca', body)

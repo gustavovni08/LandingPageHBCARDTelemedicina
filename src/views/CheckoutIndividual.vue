@@ -107,15 +107,15 @@ export default {
                 vendor_code: this.vendor_code
             }
 
-            const assinatura = await api.post('/gerar-assinatura', body)
-            console.log('assinatua gerada com sucesso', assinatura.data)
+            // const assinatura = await api.post('/gerar-assinatura', body)
+            // console.log('assinatua gerada com sucesso', assinatura.data)
 
-            setTimeout( async ()=>{
+            // setTimeout( async ()=>{
                 const response = await api.post('/gerar-cobranca', body)
                 console.log('cobrança criada com sucesso:', response.data)
                 this.enviarEmail()
                 this.redirectPagamento()
-            }, 10000)
+            // }, 10000)
 
             
         } catch (error) {
@@ -196,7 +196,7 @@ export default {
 
   },
     mounted() {
-        this.listarUsuarios()
+        // this.listarUsuarios()
         this.getCodigoVendedor()
         console.log(this.form.cpf)
     }

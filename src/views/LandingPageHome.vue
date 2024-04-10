@@ -430,6 +430,7 @@ export default {
                 }
             }else{
                 console.log('não há codigo de vendedor')
+                localStorage.setItem('vendor_code', '')
             }
         }
     },
