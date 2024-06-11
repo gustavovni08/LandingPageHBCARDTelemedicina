@@ -322,13 +322,13 @@ export default {
     data(){
         return{
             planos:[
-                {
-                    einsteinPrice: 99.90,
-                    title: 'Familiar',
-                    price: 29.90,
-                    users: 2,
-                    push:'Familiar'
-                },
+                // {
+                //     einsteinPrice: 99.90,
+                //     title: 'Familiar',
+                //     price: 29.90,
+                //     users: 2,
+                //     push:'Familiar'
+                // },
                 {
                     einsteinPrice: 129.90,
                     title: 'Individual',

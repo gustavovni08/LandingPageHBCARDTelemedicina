@@ -83,7 +83,7 @@ export default {
 
     methods:{
         navegar(){
-            this.$router.push(`/Plano${this.push}`)
+            window.location.href = 'https://www.asaas.com/c/oemg826bhh7u063k'
             // if (this.title === 'Individual') {
             // this.$router.push('/PlanoIndividual');
             // } else {
