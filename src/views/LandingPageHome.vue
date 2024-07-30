@@ -630,7 +630,6 @@ export default {
     .produto-header{
         display: flex;
         width: 73%;
-        justify-content: space-between;
     }
     .produto-title p{
         font-weight: bold;
@@ -640,7 +639,9 @@ export default {
     }
     .produto-logo{
         display: flex;
-        width: 30%;
+    }
+    .produto-logo img{
+        max-width: 300px;
     }
 
 
